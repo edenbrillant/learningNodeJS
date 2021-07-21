@@ -4,12 +4,11 @@ var app = express()
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
 var mongoose = require('mongoose')
+const dbUrl = require('./dburl').url
 
 app.use(express.static(__dirname))
 app.use(bodyParer.json())
 app.use(bodyParer.urlencoded({extended: false}))
-
-var dbUrl = 'mongodb+srv://user:user@learning-node.ukoen.mongodb.net/learning-node?retryWrites=true&w=majority'
 
 var Message = mongoose.model('Message', {
     name: String,
